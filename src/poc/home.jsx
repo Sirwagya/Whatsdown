@@ -20,8 +20,10 @@ const home = (props) => {
   return (
     <>
       <div>home</div>
-      <button onClick={handleChat}>Chat</button>
-      <button onClick={handleLogout}>Logout</button>
+      <div class="flex gap-4">
+      <button class="text-white h-12 w-24 bg-sky-500 hover:bg-sky-700 rounded-xl m-9" onClick={handleChat}>Chat</button>
+      <button class="text-white h-12 w-24 bg-sky-500 hover:bg-sky-700 rounded-xl m-9" onClick={handleLogout}>Logout</button>
+      </div>
     </>
   )
 }

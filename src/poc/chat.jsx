@@ -12,8 +12,10 @@ const chat = (props) => {
   return (
     <>
     <div>chat</div>
-    <button onClick={() => navigate("/")}>Home</button>
-    <button onClick={handleLogout}>Logout</button>
+    <div class="flex gap-4">
+    <button class="text-white h-12 w-24 bg-sky-500 hover:bg-sky-700 rounded-xl " onClick={() => navigate("/")}>Home</button>
+    <button class="text-white h-12 w-24 bg-sky-500 hover:bg-sky-700 rounded-xl " onClick={handleLogout}>Logout</button>
+    </div>
     </>
   )
 }
