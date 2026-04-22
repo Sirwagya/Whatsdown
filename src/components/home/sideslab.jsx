@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const sideslab = () => {
-  return (
-    <>
-    
-    </>
-  )
-}
+  return <></>;
+};
 
-export default sideslab
+export default sideslab;
