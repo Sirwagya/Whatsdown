@@ -3,10 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth, db} from "../../../firebase";
 import { Fingerprint, LogIn } from "lucide-react";
-import { setDoc } from "firebase/firestore";
+import { setDoc, doc } from "firebase/firestore";
+
+const provider = new GoogleAuthProvider();
 
 const Loginpage = (props) => {
-  const setislogged = props.setislogged;
   const navigate = useNavigate();
   async function createUser(userInfo) {
     const userObj = userInfo.user;
@@ -16,7 +17,7 @@ const Loginpage = (props) => {
       uid: uid,
       name: displayName,
       email: email,
-      profile: photoURL,
+      profile_pic: photoURL,
       createdAt: timeStamp,
       status: "Hi, I am busy rn",
     });
@@ -30,9 +31,8 @@ const Loginpage = (props) => {
 
   const handleLogin = async () => {
     try {
-      const userData = await signInWithPopup(auth, new GoogleAuthProvider());
+      const userData = await signInWithPopup(auth, provider);
       await createUser(userData);
-      setislogged(true);
       navigate("/");
     } catch (error) {
       console.error(error);

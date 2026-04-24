@@ -1,15 +1,20 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { auth } from "../../../firebase";
+import { signOut } from "firebase/auth";
+
 
 const ChatInterface = (props) => {
   const param = useParams();
   const setislogged = props.setislogged;
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    if (setislogged) setislogged(false);
-    navigate("/login");
-    alert("User logged out");
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.error("Error logging out:", error);
+    }
   };
 
   return (
